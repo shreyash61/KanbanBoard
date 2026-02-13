@@ -1,0 +1,192 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    height: 100%;
+    width: 100%;
+}
+
+:root{
+    --bg-color:#0B0F19; 
+
+    --primary-text-color:#E2E8F0; 
+
+    /* padding variables*/
+
+    --nav-padding: 15px 30px;
+    --section-padding: 15px 30px;
+    /* padding variable */
+    --padding-s:5px;
+    --padding-m:10px;
+    --padding-l:15px;
+    --padding-xl:20px;
+    --padding-xxl:25px;
+    /* button color */
+
+    --bg-button-color:#a4d5e7;
+    --delete-button-color:#F43F5E;
+
+    /* border radius variable */
+    --border-radius-s:5px;
+    --border-radius-m:10px;
+    --border-radius-l:15px;
+    --border-radius-xl:20px;
+    --border-radius-xxl:25px;
+    /* background-color */
+
+    /* --bg-color:#29ae37; */
+    --bg--task-color:#e7eff1;
+    --bg-taskColumn-card:rgba(61,61,61, 0.404);
+    --bg-column-color:#090a10;
+}
+body{
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+}
+main{
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+    background-color:#070707af;
+}
+nav{
+    padding: var(--nav-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+nav button{
+    background-color: var(--bg-button-color);
+    color: var(--primary-text-color);
+    padding: var(--padding-m) var(--padding-l);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: var(--border-radius-m);
+}
+
+button:hover{
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+section{
+    padding: var(--section-padding);
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    background-color: rgb(21, 21, 22);
+    gap: var(--padding-xxl);
+    
+}
+
+section .task-column{
+    background-color: var(--bg-column-color);
+    flex-grow: 1;
+    padding: var(--padding-m);
+    border-radius: var(--border-radius-xxl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m);
+    border-radius: var(--border-radius-m);
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    
+    
+}
+
+section .task-column.hover-over{
+    border: 2px dashed var(--primary-text-color);
+    scale: 1.05;
+}
+
+
+section .task-column .heading{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section .task-column .task{
+    background-color: var(--bg-taskColumn-card);
+    padding: var(--padding-m);
+    border-radius: var(--border-radius-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-s) var(--padding-m);
+    cursor: grab;
+    
+}
+
+section .task-column .task:active{
+    cursor: grabbing;
+}
+
+section .task-column .task button{
+    align-self: flex-end;
+    cursor: pointer;
+    padding: var(--padding-s) var(--padding-m);
+    border-radius: var(--border-radius-m);
+    border: none;
+    outline: none;
+    background-color: var(--delete-button-color);
+    color: var(--primary-text-color);
+}
+
+.modal{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+
+}
+
+.modal .bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(61,61,61, 0.404);
+    backdrop-filter: blur(5px);
+}
+.modal .center{
+    background-color: var(--bg-button-color);
+    padding: var(--padding-xxl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m);
+    z-index: 10;
+}
+
+.modal .center input, .modal .center textarea, .modal .center select{
+    background-color: var(--bg--task-color);
+    border: none;
+    outline: none;
+    color: var(--primary-text-color);
+    padding: var(--padding-m);
+    border-radius: var(--border-radius-s);
+}
+.modal .center button{
+    background-color: var(--bg--task-color);
+    color: var(--primary-text-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: var(--padding-m) var(--padding-l);
+    border-radius: var(--border-radius-m);
+    width: fit-content;
+    align-self: center;
+
+}
